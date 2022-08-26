@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <title>Kitap Kayıt</title>
+  <style>
+    body{
+        background: #304352;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #d7d2cc, #304352);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #d7d2cc, #304352); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    #sayfa{
+
+        border: 3px solid black;
+        border-radius: 10px;
+        width: 500px;
+        margin-top: 5%;
+        margin-left: 15%;
+        background: grey;
+        padding:20px;
+        background: #40E0D0;  /* fallback for old browsers */
+        background: #40E0D0;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    label{
+      display:block;
+      margin-top:5px;
+    }
+    input{
+      width: 200px;
+      height: 25px;
+      font-size:1.2em;
+    }
+    button{
+        border: 3px solid black;
+        border-radius: 10px;
+        background: #ee9ca7;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border:none;
+        display:block;
+        margin-top:5px;
+        width: 204px;
+        height: 50px;
+        text-align: center;
+        font-size:1.2em;
+        }
+    table{
+        background: #3C3B3F;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        margin:5px;
+        width: 100%;
+        color:#fff;
+    }
+    td,th{
+      border:5px solid white;
+      border-radius: 2px;
+      border-spacing: 0px;
+      margin: 0px;
+    }
+    .bilgi{
+        border: 5px solid black;
+        border-radius: 5px;
+    }
+    .col-md-3{
+      margin-top: 10%;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="row">
+    <div class="col-md-3">
+    <div class="list-group">
+        <a href="index.html" class="list-group-item list-group-item-action">AnaSayfa</a>
+        <a href="kayit.html" class="list-group-item list-group-item-action">Kitap Ekleme</a>
+    </div>
+</div>
+
+  <div id="sayfa">
+    <input type="text"  id="isim" placeholder="Kitap İsmi" required><br>
+    <input type="text"  id="yazar" placeholder="Yazar" required><br>
+    <input type="number"  id="yil" placeholder="Basım Yılı" required><br>
+    <input type="text"  id="tür" placeholder="Türü " required>
+
+    <button id="ekle">Tabloya Ekle</button>
+  <table id="liste">
+      <tr>
+        <th>Kitap İsmi</th>
+        <th>Yazar</th>
+        <th>Basım Yılı</th>
+        <th>Türü</th>
+      </tr>
+  </table>
+  </div>
+    
+ 
+  <script>
+    var isim=document.querySelector("#isim");
+    var yazar=document.querySelector("#yazar");
+    var yas=document.querySelector("#yil");
+    var tür=document.querySelector("#tür");
+    var ekle=document.querySelector("#ekle");//tıklama olayı eklenecek
+    var liste=document.querySelector("#liste");
+ 
+    ekle.onclick=function(){
+      alert("Tebrikler , Kitap başarılı bir şekilde eklenmiştir.")
+      //butona tıklanınca çalıştırılacak
+      
+      //td elementlerini oluşturuyoruz
+      var tisim=document.createElement("td");
+      var tyazar=document.createElement("td");
+      var tyil=document.createElement("td");
+      var ttür=document.createElement("td");
+ 
+      
+      tisim.textContent=isim.value;//textboxtan değeri okuyup aktarıyoruz.
+      tyazar.textContent=yazar.value;//textboxtan değeri okuyup aktarıyoruz.
+      tyil.textContent=yil.value;//textboxtan değeri okuyup aktarıyoruz.
+      ttür.textContent=tür.value;
+      
+
+ 
+      //tr elementi oluşturuyoruz
+      let tr=document.createElement("tr");
+ 
+      //tdleri tr içine ekliyoruz
+      tr.appendChild(tisim);
+      tr.appendChild(tyazar);
+      tr.appendChild(tyil);
+      tr.appendChild(ttür);
+ 
+      //tr elementini liste (tablo) içine ekliyoruz
+      liste.appendChild(tr);
+ 
+      //nesnelerin için eklemeden sonra temizleyelim
+      isim.value="";
+      yazar.value="";
+      yil.value="";
+      tür.value="";
+ 
+    }
+ 
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
